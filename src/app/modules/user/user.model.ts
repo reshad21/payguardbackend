@@ -4,11 +4,8 @@ import config from '../../config';
 import { TUser, UserModel } from './user.interface';
 const userSchema = new Schema<TUser, UserModel>(
   {
-    name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    phone: { type: String, required: true },
-    address: { type: String, required: true },
     role: { type: String, enum: ['admin', 'user'], required: true },
   },
   {

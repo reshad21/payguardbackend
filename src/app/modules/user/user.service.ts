@@ -7,7 +7,7 @@ const getProfilefromDB = async (payload: any) => {
   const result = await User.findOne(
     {
       email: payload.email,
-      phone: payload.phone
+      // phone: payload.phone
     }
   ).select('-password');
   return result;
