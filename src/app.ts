@@ -10,29 +10,36 @@ import notFound from './app/middlewares/notFound';
 import router from './app/routes';
 
 const app: Application = express();
-app.use(express.static(path.join(__dirname, "../public/")))
-//parsers
+
+// Static files configuration
+app.use(express.static(path.join(__dirname, "../public/")));
+
+// Parsers
 app.use(express.json());
-// app.use(cors({ origin: 'https://bike-rental-website.vercel.app', credentials: true }));
+
+// CORS Configuration
 app.use(
   cors({
     origin: ['https://bike-rental-website.vercel.app', 'http://localhost:5173'],
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],  // Allow PATCH method
+    allowedHeaders: ['Content-Type', 'Authorization'],  // Allow these headers
     credentials: true,
   })
 );
 
-// application routes
+
+
+// Application routes
 app.use('/api', router);
 
-
-
 app.get('/', (req: Request, res: Response) => {
-  res.send('App is running!')
-})
+  res.send('App is running!');
+});
 
+// Global error handler
 app.use(globalErrorHandler);
 
-//Not Found
+// 404 handler (Not Found)
 app.use(notFound);
 
 export default app;

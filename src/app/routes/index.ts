@@ -4,6 +4,7 @@ import { BikeRoutes } from '../modules/bike/bike.route';
 import { OrderRoutes } from '../modules/Order/order.routes';
 import { paymentRoutes } from '../modules/payment/payment.route';
 import { RentRoutes } from '../modules/rent/rent.route';
+import { PaymentRequestRoutes } from '../modules/Request/request.route';
 import { ReviewRoutes } from '../modules/review/review.route';
 import { SubscriptionRoutes } from '../modules/subscription/subscription.route';
 import { UserRoutes } from '../modules/user/user.route';
@@ -14,6 +15,10 @@ const moduleRoutes = [
   {
     path: '/users',
     route: UserRoutes,
+  },
+  {
+    path: '/paymentRequest',
+    route: PaymentRequestRoutes,
   },
   {
     path: '/bikes',
