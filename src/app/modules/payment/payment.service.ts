@@ -1,7 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import { Order } from "../Order/order.model";
-import Booking from "../rent/rent.model";
 import { verifyPayment } from "./payment.utils";
 
 const confirmationService = async (transactionId: string, status: string) => {
@@ -15,15 +14,7 @@ const confirmationService = async (transactionId: string, status: string) => {
         })
         message = "Successfully Paid!";
         //find and update
-        if (result) {
-            const bookingDetails = await Booking.findById(result?.bookingID);
-            if (bookingDetails) {
-                // Update payBill to true
-                bookingDetails.payBill = true;
-                await bookingDetails.save(); // Save the updated booking details
-                console.log("Booking details updated: ", bookingDetails);
-            }
-        }
+
     } else {
         message = "Payment Failed!"
     }
