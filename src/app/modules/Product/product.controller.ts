@@ -38,7 +38,7 @@ const getSingleProduct = catchAsync(async (req, res) => {
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,
-        message: 'Single payment request retrieved successfully',
+        message: 'Single product retrieved successfully',
         data: result,
     });
 });
